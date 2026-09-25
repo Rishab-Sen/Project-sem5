@@ -1,0 +1,22 @@
+{
+  "algo": "qmix",
+  "n_rovers": 3,
+  "seed": 0,
+  "device": "cpu",
+  "iters": 600,
+  "steps_per_iter": 2048,
+  "lr": 0.0003,
+  "epochs": 10,
+  "entropy_coef": 0.01,
+  "frames": 60000,
+  "eps_decay": 30000,
+  "update_every": 4,
+  "qmix_levels": 3,
+  "eval_every": 20,
+  "eval_episodes": 8,
+  "max_minutes": 8.0,
+  "curriculum": true,
+  "max_stage": 3,
+  "run_name": "qmix_n3_s0",
+  "resume": false
+}

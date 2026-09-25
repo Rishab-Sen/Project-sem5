@@ -1,0 +1,19 @@
+{
+  "algo": "mappo",
+  "n_rovers": 3,
+  "seed": 0,
+  "device": "cpu",
+  "iters": 40,
+  "steps_per_iter": 2048,
+  "lr": 0.0003,
+  "epochs": 10,
+  "entropy_coef": 0.01,
+  "frames": 300000,
+  "eps_decay": 80000,
+  "update_every": 4,
+  "eval_every": 10,
+  "eval_episodes": 8,
+  "max_minutes": 8.0,
+  "run_name": "mappo_n3_s0",
+  "resume": false
+}

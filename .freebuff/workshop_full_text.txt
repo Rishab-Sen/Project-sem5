@@ -1,0 +1,468 @@
+
+
+===== PAGE 1 =====
+Deepfake & Digital Forensics Workshop Report | Days 1–3  
+WORKSHOP REPORT 
+Deepfake Detection: An Emerging Cyber Threats 
+Day 1 – Day 3 | Speaker-wise Session Analysis 
+ 
+  
+ 
+
+
+===== PAGE 2 =====
+Deepfake & Digital Forensics Workshop Report | Days 1–3  
+1. Executive Summary  
+The three-day workshop covered a broad set of themes around deepfake detection, digital forensics, cybersecurity, 
+AI-based media analysis, and emerging research directions. The sessions combined real-world case studies with 
+technical concepts, investigative methods, and research-oriented discussions.  
+The notes indicate a progression from understanding deepfake incidents and their societal and security implications, 
+to practical investigation and forensic analysis, and finally to advanced machine-learning research topics such as 
+domain adaptation, generalization, multimodal analysis, uncertainty, and out of distribution detection.  
+ 
+2. Workshop at a Glance  
+Day  
+Speaker(s) identified  
+Main focus  
+Overall emphasis  
+Day 1  
+1. Dr. Rajendra Dakhale 
+2. 
+Shweta Chawla 
+3. Chetan Kawley 
+4. 
+Nikhil Birla 
+5. Tejas Limaye  
+Deepfake landscape, 
+attacks, detection and 
+investigation  
+Concepts → real-world 
+cases → forensic 
+investigation  
+Day 2  
+1. Tanmay Dixit  
+Deepfake/cybercrime 
+investigation and practical 
+forensic tools  
+Incident reconstruction → 
+evidence → analysis  
+Day 3  
+1. 
+Rahul Iyengar 
+2. 
+Fardeen Pathan  
+Research 
+directions 
+in 
+forensic AI and advanced 
+deepfake analysis  
+ML research →  
+generalization → forensic 
+robustness  
+  
+Note: The speaker names and topics below are transcribed and organized from the supplied handwritten workshop 
+photographs. Where the notes contain abbreviated or broad references, the report preserves the meaning without 
+adding unsupported details.  
+  
+3. Day 1 – Sessions and Speaker Analysis  
+Day 1 established the foundation for understanding deepfakes and their risks. The sessions moved from highlevel 
+concepts and examples to investigation, forensic examination, and practical indicators of manipulated media.  
+Session 1: Deepfake Landscape and Real-World Impact  
+Day  
+Day 1  
+Speaker(s)  
+Dr. Rajendra Dakhale  
+Time  
+11:10 am – 12:15 pm  
+Focus  
+Deepfake Landscape and Real-World Impact  
+  
+Session overview: The first session introduced deepfakes through real-world examples and examined why synthetic 
+media has become a significant security and social concern.  
+Key discussion points  
+• 
+How deepfake technology has developed and how attacks can be carried out.  
+• 
+Real-world deepfake examples and the financial or reputational harm that can result.  
+• 
+The role of phishing and social engineering in deepfake-enabled attacks.  
+• 
+Audio deepfakes and differences between audio and visual manipulation.  
+• 
+Evolution of deepfake techniques and the changing threat landscape.  
+• 
+Foundational understanding of deepfake detection and AI-based detection approaches.  
+
+
+===== PAGE 3 =====
+Deepfake & Digital Forensics Workshop Report | Days 1–3  
+• 
+Threats and potential use of AI-generated/deepfake content for deception.  
+• 
+Detection and defence mechanisms, including AI-based deepfake detection. Key learning / analytical takeaway  
+The key takeaway was that deepfakes should be viewed as part of a wider deception ecosystem. Detection therefore 
+needs to consider not only visual artifacts, but also audio, context, attack strategy, and the way manipulated content is 
+delivered to a target.  
+Session 2: Deepfake Attacks, Identification and Digital Evidence  
+Day  
+Day 1  
+Speaker(s)  
+Shweta Chawla  
+Time  
+1:35 pm – 2:45 pm  
+Focus  
+Deepfake Attacks, Identification and Digital Evidence  
+  
+Session overview: This session focused on how deepfake attacks can be understood through their observable 
+patterns, indicators, and supporting digital evidence.  
+Key discussion points  
+• 
+Identification of different types of deepfake attacks.  
+• 
+Discussion of attack patterns and how manipulated media may be used in fraudulent scenarios.  
+• 
+Use of visual clues and supporting evidence to establish whether content is suspicious.  
+• 
+Importance of understanding the context in which an image or media file appears.  
+• 
+Investigation of suspicious content rather than treating a single visual clue as conclusive.  
+• 
+Relationship between deepfake detection, digital forensics, and cybercrime investigation. 
+               Key learning / analytical takeaway  
+The session reinforced that deepfake identification is strongest when multiple pieces of evidence are combined. A 
+forensic workflow should establish provenance, context, indicators of manipulation, and supporting evidence rather 
+than relying on one detection signal.  
+Session 3: Identifying Leaks and Possible Attack Vectors  
+Day  
+Day 1  
+Speaker(s)  
+Chetan  
+Time  
+3:00 pm  
+Focus  
+Identifying Leaks and Possible Attack Vectors  
+  
+Session overview: The third session introduced an investigative perspective on identifying weaknesses, leaks, and 
+possible attack paths that can support deepfake or cyber incidents.  
+Key discussion points  
+• 
+Identification of possible leaks and their relevance to an investigation.  
+• 
+Tracing possible attack vectors and understanding how information may be exposed.  
+• 
+Connecting available evidence with the likely source or pathway of an incident.  
+Key learning / analytical takeaway  
+The discussion highlighted the importance of tracing an incident back to its source and understanding the pathway 
+through which information or media became available to an attacker.  
+
+
+===== PAGE 4 =====
+Deepfake & Digital Forensics Workshop Report | Days 1–3  
+Session 4: Deepfake Investigation and Digital Forensics  
+Day  
+Day 1  
+Speaker(s)  
+Nikhil Birla; Tejas Limaye  
+Time  
+Session 4  
+Focus  
+Deepfake Investigation and Digital Forensics  
+  
+Session overview: The fourth session used a case-study-driven approach. Nikhil Birla Sir discussed the investigator's 
+perspective, while Tejas Limaye Sir focused on the forensic examination of evidence.  
+Key discussion points  
+• 
+Case-study-based investigation of a suspected deepfake incident.  
+• 
+Nikhil Birla Sir's role as investigator: understanding the incident, reconstructing events, and examining how the 
+attack was carried out.  
+• 
+Tejas Limaye Sir's role as forensic examiner: examining digital evidence and identifying signs of manipulation.  
+• 
+Revisiting the Hong Kong 2024 incident and discussing how it could be investigated and reconstructed.  
+• 
+Understanding why safeguards failed in the incident.  
+• 
+Signs of fake images: lighting mismatch, boundary artifacts, blinking/gaze inconsistencies and other visual 
+anomalies.  
+• 
+Image-based case study for identifying deepfake content.  
+• 
+Importance of verifying the source and provenance of media rather than relying only on pixel-level analysis.  
+• 
+Replaying/re-running the Hong Kong case using a new investigative stack and layered approach.  
+• 
+Discussion of defence scenarios, including examples referenced from July 2024, and closing the case through 
+evidence-based reasoning.  
+Key learning / analytical takeaway  
+A major learning was that forensic deepfake analysis should move beyond 'does the image look fake?' to 'where did it 
+come from, how was it created or altered, what evidence supports the conclusion, and can the incident be 
+reconstructed?' Source verification, contextual evidence, visual indicators, and investigation must work together.  
+Day 1 – Overall Analysis  
+• 
+Day 1 progressed from the broad threat of deepfakes to practical investigation and forensic examination.  
+• 
+The strongest recurring theme was that deepfake detection is not purely a computer-vision problem; it is also an 
+investigation and evidence-verification problem.  
+• 
+Real-world incidents, especially the Hong Kong 2024 example, were used to connect technical detection with 
+actual attack scenarios.  
+• 
+The distinction between investigator and forensic examiner highlighted the need for both incident reconstruction 
+and technical evidence analysis.  
+  
+4. Day 2 – Sessions and Speaker Analysis  
+The supplied Day 2 notes identify Tanmay Dixit as a speaker and focus strongly on practical cybercrime and deepfake 
+investigation. The session connected suspicious online content with evidence collection, technical analysis, and 
+investigative tools.  
+ 
+ 
+
+
+===== PAGE 5 =====
+Deepfake & Digital Forensics Workshop Report | Days 1–3  
+Session 1 / recorded session: Practical Deepfake and Cybercrime Investigation  
+Day  
+Day 2  
+Speaker(s)  
+Tanmay Dixit  
+Time  
+10:20 am – 1:00 pm  
+Focus  
+Practical Deepfake and Cybercrime Investigation  
+  
+Session overview: The session used practical scenarios to demonstrate how investigators can approach suspicious 
+digital content and online incidents.  
+Key discussion points  
+• 
+A lost-phone scenario and use of Google/digital services to locate or identify relevant information.  
+• 
+Use of available online information and evidence during an investigation.  
+• 
+Fake websites and suspicious domains as possible sources of fraud or deception.  
+• 
+Identification and analysis of IP addresses associated with suspicious activity.  
+• 
+Tracking links to identify the IP address or technical origin associated with a suspected incident.  
+• 
+Use of cryptographic concepts and encryption/decryption in digital investigations.  
+• 
+Discussion of tools used for image analysis and forensic examination.  
+• 
+AI-based tools for image forensics and analysis.  
+• 
+Practical components and key takeaways related to deepfake investigation.  
+Key learning / analytical takeaway  
+The session emphasized a hands-on investigative mindset: identify the incident, preserve clues, trace technical 
+indicators, and use appropriate forensic tools. It also demonstrated that online investigations often require combining 
+open-source information, network indicators, cryptographic concepts, and media analysis.  
+Day 2 – Overall Analysis  
+• 
+Day 2 shifted the workshop toward practical investigation and tool-oriented thinking.  
+• 
+The examples showed how seemingly ordinary online artifacts—links, websites, domains, IP addresses, images, 
+or devices—can become evidence.  
+• 
+The session connected deepfake investigation with the broader field of cyber forensics rather than treating it as an 
+isolated AI problem.  
+• 
+The practical orientation made the concepts applicable to real incident-response and digital-evidence workflows.  
+  
+5. Day 3 – Sessions and Speaker Analysis  
+Day 3 moved toward advanced research and technical discussions. The notes show a strong emphasis on machine 
+learning for forensic applications, generalization across domains and datasets, multimodal analysis, robustness, 
+explainability, and out-of-distribution detection.  
+Session 1: Advanced Machine Learning for Forensic Analysis  
+Day  
+Day 3  
+Speaker(s)  
+Rahul Iyengar  
+Time  
+10:30 am  
+Focus  
+Advanced Machine Learning for Forensic Analysis  
+  
+Session overview: The session explored advanced research directions for applying machine learning and deep 
+learning to forensic problems.  
+
+
+===== PAGE 6 =====
+Deepfake & Digital Forensics Workshop Report | Days 1–3  
+Key discussion points  
+• 
+Shortcut learning in forensic CNNs and the risk of models learning unintended cues.  
+• 
+Attention and noise learning.  
+• 
+Domain-incremental learning, including reference to CVPR 2026 research.  
+• 
+Biometric facial manipulation and forensic analysis.  
+• 
+Fourier spectral power-law invariants.  
+• 
+Audio-visual multimodal learning and interaction.  
+• 
+Domain-adaptive methods for forensic applications.  
+• 
+Optimal transport and Earth Mover's Distance.  
+• 
+Source-free domain adaptation.  
+• 
+Domain generalization and invariant representations.  
+• 
+Meta-learning for generalization.  
+• 
+Closed-set versus open-set recognition.  
+• 
+Openness metrics and open-space risk.  
+• 
+Energy-based out-of-distribution (OOD) scoring.  
+• 
+Forensic applications involving diffusion and flow matching.  
+• 
+Spatiotemporal detection in video.  
+• 
+State-of-the-art benchmark comparison and cross-dataset generalization.  
+• 
+Forensic explainability, saliency, and technical discussion/Q&A.  
+Key learning / analytical takeaway  
+The central research message was robustness and generalization. A forensic AI model should not merely perform well 
+on a familiar dataset; it should learn meaningful forensic evidence, generalize across domains and sources, recognize 
+unfamiliar cases, and provide interpretable evidence for its decisions.  
+Session 2: Multimodal Forensics, Indian Datasets and Advanced Detection  
+Day  
+Day 3  
+Speaker(s)  
+Fardeen Pathan  
+Time  
+12:45 pm  
+Focus  
+Multimodal Forensics, Indian Datasets and Advanced  
+ 
+Detection  
+  
+Session overview: The second Day 3 session continued the research focus with examples involving multimodal 
+systems, Indian datasets, model architectures, authentication, fusion, and cryptographic techniques.  
+Key discussion points  
+• 
+Bengaluru 2024 incident/example as a forensic reference.  
+• 
+Fast semantic and frequency-based analysis.  
+• 
+Need for Indian datasets for developing and evaluating forensic systems.  
+• 
+Discussion of ViT, DINOv2, SRM and DCT/FFT-related approaches.  
+• 
+Use of 32-channel representations/features in the discussed setup.  
+• 
+EfficientNet and related model architectures.  
+• 
+Loss functions and authentication/fusion approaches.  
+• 
+PAC, Merkle trees, and Falcon-512 in the context of security/verification.  
+• 
+Cryptographic algorithms and their relevance to trustworthy digital evidence.  
+
+
+===== PAGE 7 =====
+Deepfake & Digital Forensics Workshop Report | Days 1–3  
+Key learning / analytical takeaway  
+The session highlighted the importance of locally relevant datasets, combining semantic and frequency information, 
+and integrating security mechanisms with AI-based media analysis. Forensic systems need both strong detection 
+models and trustworthy mechanisms for authenticating and validating digital evidence.  
+Day 3 – Overall Analysis • Day 3 represented a transition from applied investigation to 
+advanced research methodology.  
+• 
+Generalization, domain adaptation, multimodal learning, and OOD detection emerged as major themes for 
+building reliable forensic AI.  
+• 
+The discussion of Indian datasets emphasized the importance of evaluating models on data that reflects the actual 
+deployment environment.  
+• 
+Explainability and source verification were consistent with the investigative lessons from Days 1 and 2, showing 
+continuity across the workshop.  
+  
+6. Cross-Day Analysis and Key Learnings  
+6.1 Progression of the Workshop  
+1. Day 1 – Understand the threat: deepfakes, attacks, real-world incidents, visual indicators, and investigation.  
+2. Day 2 – Investigate the incident: practical evidence collection, online traces, IP/domain analysis, tools, and 
+forensic workflows.  
+3. Day 3 – Build better systems: advanced ML research, domain generalization, multimodal analysis, explainability, 
+authentication, and OOD detection.  
+6.2 Major Themes Across Speakers  
+• 
+Deepfakes are a security and forensic problem, not only an image-generation problem.  
+• 
+Source and provenance verification are critical complements to pixel-level or model-based detection.  
+• 
+Real-world case reconstruction helps bridge the gap between technical models and actual investigations.  
+• 
+Forensic AI must be robust to dataset shifts, new manipulation methods, unfamiliar sources, and openset 
+conditions.  
+• 
+Multimodal evidence—image, video, audio, metadata, source information, and network traces—can provide 
+stronger investigative conclusions.  
+• 
+Explainability matters because forensic conclusions need to be understandable and defensible.  
+• 
+Locally relevant datasets and realistic benchmarks are important for reliable deployment.  
+• 
+Cryptographic and authentication mechanisms can strengthen trust in digital evidence.  
+6.3 Practical Takeaways  
+• 
+Do not rely on a single visual artifact to declare content fake.  
+• 
+Check the source, provenance, context, and surrounding evidence.  
+• 
+Use multiple forensic indicators such as lighting, boundaries, gaze/blinking, frequency patterns, and other 
+inconsistencies.  
+• 
+Treat suspicious links, domains, IP addresses, and online traces as potential evidence in a broader cyber 
+investigation.  
+• 
+For AI systems, evaluate cross-dataset performance rather than only in-dataset accuracy.  
+• 
+Include open-set/OOD evaluation so systems can handle unfamiliar manipulations.  
+• 
+Maintain an evidence-oriented workflow so technical findings can support a complete incident reconstruction.  
+ 
+
+
+===== PAGE 8 =====
+Deepfake & Digital Forensics Workshop Report | Days 1–3  
+7. Conclusion  
+Across the three days, the workshop presented a complete perspective on deepfake and digital-forensic challenges—
+from understanding how attacks occur, to investigating real incidents, examining evidence, and designing more 
+robust AI systems. The speaker sessions collectively demonstrated that reliable deepfake forensics requires a 
+combination of investigation, source verification, computer vision, multimodal learning, cybersecurity, cryptography, 
+and careful evaluation of model robustness.  
+The overall learning can be summarized as: detect the manipulation, verify the source, reconstruct the incident, 
+validate the evidence, and design AI systems that remain reliable when the data, domain, or attack method changes.  
+Appendix A – Source Note Mapping  
+The supplied photographs were reviewed and organized into the following day/session structure. This mapping is 
+included to make the report traceable to the handwritten notes.  
+Day  
+Session  
+Speaker(s)  
+Day 1  
+Session 1  
+Dr. Rajendra Dakhale  
+Day 1  
+Session 2  
+Shweta Chawla  
+Day 1  
+Session 3  
+Chetan  
+Day 1  
+Session 4  
+Nikhil Birla; Tejas Limaye  
+Day 2  
+Session 1 
+Tanmay Dixit  
+Day 3  
+Session 1  
+Rahul Iyengar  
+Day 3  
+Session 2  
+Fardeen Pathan  
+  
