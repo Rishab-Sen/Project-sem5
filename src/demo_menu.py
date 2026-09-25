@@ -46,8 +46,8 @@ TALKING = {
          "BUT it uses exact ground-truth sensing. Watch it fail and back off "
          "when stuck.'",
     "3": "Say: 'Our trained MARL team - each rover decides using ONLY its own "
-         "9-beam sensor. 73% success, 6x faster than MAPPO. This policy was "
-         "LEARNED, not programmed.'",
+         "9-beam sensor. 50% success, about twice as fast as MAPPO when it "
+         "delivers. This policy was LEARNED, not programmed.'",
     "4": "Say: 'MAPPO - slower but perfectly safe: ZERO collisions on every "
          "successful delivery. Different algorithm, same reward - different "
          "character.'",
@@ -67,8 +67,8 @@ def run_benchmark():
     print("\nRunning 30-episode formal benchmark (QMIX)...")
     subprocess.run([sys.executable, os.path.join(ROOT, "src", "evaluate.py"),
                     "--ckpt", os.path.join(ROOT, "runs", "qmix_n3_s0",
-                                           "ckpt", "final.pt"),
-                    "--episodes", "30", "--out-name", "eval_qmix_final"],
+                                           "ckpt", "best.pt"),
+                    "--episodes", "30", "--out-name", "eval_qmix_best"],
                    cwd=ROOT)
 
 
@@ -88,10 +88,13 @@ def main():
                 subprocess.run([sys.executable, os.path.join(ROOT, "src",
                                 "demo.py"), "--baseline"], cwd=ROOT)
             elif choice == "3":
+                # best.pt = checkpoint saved at the evaluation peak. final.pt
+                # degraded late in training (catastrophic forgetting) — never
+                # demo final.pt for QMIX.
                 subprocess.run([sys.executable, os.path.join(ROOT, "src",
                                 "demo.py"), "--ckpt", os.path.join(
                                     ROOT, "runs", "qmix_n3_s0", "ckpt",
-                                    "final.pt")], cwd=ROOT)
+                                    "best.pt")], cwd=ROOT)
             elif choice == "4":
                 subprocess.run([sys.executable, os.path.join(ROOT, "src",
                                 "demo.py"), "--ckpt", os.path.join(

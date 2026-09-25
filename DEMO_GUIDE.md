@@ -10,8 +10,8 @@
 > "Three rovers must drag a shared payload to a goal zone using only local
 > sensors and a shared team reward. Nothing about cooperation is programmed —
 > the coordination **emerges from training**. A random policy scores 0%.
-> My QMIX team delivers the payload **73% of the time**, roughly **2.3x faster**
-> than a MAPPO team, using only 9 LiDAR beams per rover. A classical
+> My QMIX team delivers the payload **50% of the time**, roughly **twice as
+> fast** as a MAPPO team, using only 9 LiDAR beams per rover. A classical
 > potential-fields controller does reach 100% — but only because it cheats
 > with privileged ground-truth sensing. I'll show you all four live."
 
@@ -53,7 +53,7 @@ If time is short, this is the whole demonstration:
 | 1 | **1** | Random-policy window | "This is the unsolved problem — three untrained agents. Zero success: the payload barely moves, progress is under 2%." (let it flail ~10 s) |
 | 2 | **3** | QMIX window | "Same arena, same sensors — but this policy was **learned**. Watch it pull, rotate, and settle the payload in the zone." (let it finish one delivery, or press R for another run) |
 | 3 | **ESC** → **4** | MAPPO window | "A second algorithm on the identical task: much more cautious — slower, but **zero collisions** on every successful delivery." (~20 s) |
-| 4 | **ESC** | back at menu | "Formal numbers: 30 fixed-seed episodes — QMIX 73% success, MAPPO 30% but perfectly safe, APF baseline 100% only with privileged sensing." |
+| 4 | **ESC** | back at menu | "Formal numbers: 30 fixed-seed episodes — QMIX 50% success and fastest deliveries, MAPPO ~27–30% but perfectly safe, APF baseline 100% only with privileged sensing." |
 
 Keys inside every window: **SPACE** pause · **R** new scenario · **+/-** speed · **ESC** quit.
 
@@ -109,8 +109,8 @@ APF baseline (press **2**):
 | Step | Press | What you say |
 |------|-------|--------------|
 | 1 | **1** | "Random policy — the baseline of failure. 0 of 30 episodes." |
-| 2 | **3** | "QMIX — learned team, 73% success, delivers in ~182 steps when it succeeds. Each rover sees ONLY its own 9-beam sensor." |
-| 3 | **4** | "MAPPO — 30% success but 0 collisions on every success; tightest formation (rig stretch ~0.07 m). Cautious character." |
+| 2 | **3** | "QMIX — learned team, 50% success, delivers in ~220 steps on average when it succeeds. Each rover sees ONLY its own 9-beam sensor." |
+| 3 | **4** | "MAPPO — ~27% success but 0 collisions on every success; tightest formation (rig stretch ~0.06 m). Cautious character." |
 | 4 | **2** | "The classical APF controller: 100% success, near-straight paths — but it uses ground-truth positions of everything. Our rovers don't have that luxury." |
 
 ### Part C — Wrap (1 min) — press **6**
@@ -127,15 +127,24 @@ Same fixed-seed evaluation suite, full task (all obstacles active):
 |---|---|---|---|---|
 | Random | **0%** | — | never (600) | 0.52 |
 | APF baseline | **100%** | 2.8 | 80.6 | 1.02 |
-| MAPPO (best ckpt) | **30%** | **0.0** | 427 | 0.76 |
-| QMIX (final) | **73%** | 25.8 | **182** | 0.49 |
+| MAPPO (best ckpt) | **~27%** | **0.0** | 432 | 0.78 |
+| QMIX (best ckpt) | **50%** | 47.5 | **224** | 0.38 |
 
 One-line interpretations:
 - APF = optimal path but **privileged sensing** (ground-truth positions).
 - MAPPO = safe and formation-preserving, but slow and low success.
 - QMIX = the practical winner: fastest learned delivery, moderate collisions.
-- Curriculum ablation: **75% vs 12–25%** success with/without staged training.
+- Curriculum ablation: **75% (training-time eval) vs 12–25%** with/without
+  staged training; the strict 30-seed formal suite is harder than the
+  training-time evaluation, so formal numbers are lower.
 - Training throughput ~570 env-steps/s on CPU; segmented resumable 8-min runs.
+
+**Honesty note about `final.pt`:** QMIX training continued past its peak and
+the last checkpoint degraded (late-training collapse, a well-known RL
+instability). All demo/benchmark numbers therefore use **`best.pt`** — the
+checkpoint saved at the evaluation peak. Say this proactively if sir asks
+about training curves going down at the end: it shows you understand
+checkpoint hygiene.
 
 ---
 
@@ -187,8 +196,9 @@ directly — from-scratch agents get stuck in the hard maze.
 
 **Q8. Weaknesses? (Volunteer this — it builds trust)**
 Stage-3 endgame: with the dynamic obstacle active, QMIX sometimes oscillates
-near the goal zone before settling (success-only collisions 25.8). Documented
-honestly in the report. Future work: finer endgame shaping, larger action
+near the goal zone before settling (success-only collisions ~47 on the strict
+suite), and late training showed instability — the final checkpoint degraded,
+so we ship the best-evaluation checkpoint. Documented honestly in the report. Future work: finer endgame shaping, larger action
 grid, longer training, recurrent policies for partial observability.
 
 **Q9. How long did training take?**

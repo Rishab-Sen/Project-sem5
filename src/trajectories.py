@@ -87,7 +87,7 @@ def main():
     # ---- find one success per policy (same seeds for fairness) -----------
     cases = []
     for label, build_args in [
-        ("QMIX (MARL)", dict(ckpt="runs/qmix_n3_s0/ckpt/final.pt")),
+        ("QMIX (MARL)", dict(ckpt="runs/qmix_n3_s0/ckpt/best.pt")),
         ("MAPPO (MARL)", dict(ckpt="runs/mappo_n3_cur/ckpt/best.pt")),
         ("APF baseline", dict(baseline=True)),
     ]:

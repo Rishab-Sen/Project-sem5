@@ -18,10 +18,13 @@ centralized critic) and **QMIX** (monotonic value-factorization) — and compare
 against a hand-engineered **artificial-potential-field (APF)** baseline and a
 random-policy floor. Training used a **staged curriculum** (obstacle-free
 transport → static obstacles → dynamic obstacle). On the full task, QMIX
-reached a **73% success rate** (delivering in a median of ~160 steps), MAPPO a
-**30% success rate with zero collisions on every successful episode**, the APF
+reached a **50% success rate** on the strict 30-seed benchmark (≈224 steps per
+delivery on average; its training-time evaluation peaked at 75%), MAPPO a
+**~27% success rate with zero collisions on every successful episode**, the APF
 baseline **100%** (using privileged ground-truth state unavailable to the
-learners), and a random policy 0%. A curriculum ablation shows curriculum
+learners), and a random policy 0%. QMIX training showed late-stage instability:
+the final checkpoint degraded, so all reported figures use the
+best-evaluation checkpoint (see §6.3). A curriculum ablation shows curriculum
 training was the decisive factor behind MARL success (75% vs ~12–25% eval
 success for the same compute without it). All code, training logs, benchmarks
 and a real-time PyGame demonstration are included.
@@ -130,8 +133,9 @@ frames (QMIX):
 A fairness constraint bounds the dynamic obstacle's patrol segment ≥ 2.0 m
 from the goal centre (it crosses transport corridors but cannot camp on the
 goal). **Evaluation always runs on the full task**, so all reported numbers
-are comparable. Checkpoints: `best.pt` (highest full-task eval success) and
-`final.pt`.
+are comparable. Checkpoints: `best.pt` (highest full-task eval success — used
+for all reported results) and `final.pt` (last state, degraded late in
+training for QMIX; kept only for the record).
 
 ### 5.2 Compute & reproducibility
 All training ran on CPU (Intel i5-13420H; the environment sustains ~570
@@ -145,19 +149,30 @@ fixed benchmark seeds 20000–20029.
 
 ### 6.1 Formal 30-episode benchmark (full task, greedy policies)
 
-| Metric | Random | MAPPO (best) | QMIX (final) | APF baseline* |
+| Metric | Random | MAPPO (best) | QMIX (best) | APF baseline* |
 |---|---|---|---|---|
-| Success rate | 0% | 30% | **73%** | 100% |
-| Near-delivery (<1 m) rate | 0% | 40% | 73% | 100% |
-| Avg payload progress | 1.9% | 75.0% | 79.2% | 89.9% |
-| Collisions/episode (mean) | 1.6 | 30.1 | 42.9 | **2.8** |
-| Collisions on successes | — | **0.0** | 25.8 | 2.8 |
-| Steps (successes only) | — | 427 | **182** | 81 |
-| Path efficiency (init dist/path) | 0.52 | 0.76 | 0.49 | 1.02 |
-| Mean rig stretch (m) | 0.70 | **0.07** | 1.23 | 0.59 |
-| Avg team return | −651 | −137 | −958 | −17 |
+| Success rate | 0% | ~27% | **50%** | 100% |
+| Near-delivery (<1 m) rate | 0% | 33% | 53% | 100% |
+| Avg payload progress | 1.9% | 73.0% | 67.3% | 89.9% |
+| Collisions/episode (mean) | 1.6 | 21.5 | 75.5 | **2.8** |
+| Collisions on successes | — | **0.0** | 47.5 | 2.8 |
+| Steps (successes only) | — | 432 | **224** | 81 |
+| Path efficiency (init dist/path) | 0.52 | 0.78 | 0.38 | 1.02 |
+| Mean rig stretch (m) | 0.70 | **0.06** | 0.85 | 0.59 |
+| Avg team return | −651 | −104 | −929 | −17 |
 
 \* APF uses privileged ground-truth state (see §7).
+
+### 6.3 Checkpoint note: why "best" and not "final"
+RL training is not monotone. QMIX's greedy evaluation peaked mid-training and
+the policy **degraded afterwards** (late-training value divergence, a
+documented MARL instability): the final checkpoint scores 0% on this benchmark
+while the best-evaluation checkpoint scores 50%. All tables and figures in
+this report therefore use **`ckpt/best.pt`** — the snapshot saved at the
+evaluation peak. This is standard checkpoint hygiene, not cherry-picking: the
+selection used the same validation-style greedy evaluations logged during
+training, and the 30 benchmark episodes use fixed seeds disjoint from
+training-time evaluations.
 
 ### 6.2 Learning behaviour
 * **QMIX** learned obstacle-free transport in ~20k frames (100% stage-0 eval by
@@ -269,12 +284,12 @@ python src/train.py --algo mappo --iters 40 --curriculum --max-stage 3 \
        --run-name mappo_n3_cur --resume        # repeat until convergence
 python src/train.py --algo qmix --frames 140000 --qmix-levels 3 \
        --curriculum --max-stage 3 --run-name qmix_n3_s0 --resume
-python src/evaluate.py --ckpt runs/qmix_n3_s0/ckpt/final.pt --episodes 30
+python src/evaluate.py --ckpt runs/qmix_n3_s0/ckpt/best.pt --episodes 30
 python src/evaluate.py --ckpt runs/mappo_n3_cur/ckpt/best.pt --episodes 30
 python src/evaluate.py --baseline --episodes 30
 python src/evaluate.py --random   --episodes 30
 python src/plots.py && python src/trajectories.py
-python src/demo.py --ckpt runs/qmix_n3_s0/ckpt/final.pt
+python src/demo.py --ckpt runs/qmix_n3_s0/ckpt/best.pt
 ```
 
 Raw artifacts: `runs/history.csv`, `runs/eval.csv` (training curves),

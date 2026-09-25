@@ -21,13 +21,13 @@ python src/train.py --algo mappo --iters 40  --curriculum --max-stage 3 --run-na
 python src/train.py --algo qmix  --frames 140000 --qmix-levels 3 --curriculum --max-stage 3 --run-name qmix_n3_s0 --resume
 
 # 3. formal benchmark (30 episodes, writes runs/eval_*.json/.csv)
-python src/evaluate.py --ckpt runs/qmix_n3_s0/ckpt/final.pt   --episodes 30
+python src/evaluate.py --ckpt runs/qmix_n3_s0/ckpt/best.pt   --episodes 30
 python src/evaluate.py --ckpt runs/mappo_n3_cur/ckpt/best.pt  --episodes 30
 python src/evaluate.py --baseline --episodes 30
 python src/evaluate.py --random   --episodes 30
 
 # 4. real-time visual demo
-python src/demo.py --ckpt runs/qmix_n3_s0/ckpt/final.pt    # trained QMIX
+python src/demo.py --ckpt runs/qmix_n3_s0/ckpt/best.pt     # trained QMIX
 python src/demo.py --ckpt runs/mappo_n3_cur/ckpt/best.pt   # trained MAPPO
 python src/demo.py --baseline                              # classical controller
 python src/demo.py --random                                # untrained, for contrast
@@ -75,8 +75,8 @@ Demo controls: **SPACE** pause · **R** new scenario · **+/-** speed · **ESC**
 | Policy | Success | Collisions/ep (mean) | Steps (successes) | Notes |
 |---|---|---|---|---|
 | Random | 0% | 1.6 | — | sanity floor |
-| MAPPO (curriculum) | 30% | 30.1 (**0 on every success**) | 427 | careful, collision-averse |
-| QMIX (9-action) | **73%** | 42.9 | **182** | fast, exploits contacts |
+| MAPPO (curriculum) | ~27% | 21.5 (**0 on every success**) | 432 | careful, collision-averse |
+| QMIX (9-action, best ckpt) | **50%** | 75.5 | **224** | fast, exploits contacts |
 | APF baseline* | 100% | 2.8 | 81 | *privileged ground-truth sensing |
 
 See `REPORT.md` for full methodology, ablations and discussion.

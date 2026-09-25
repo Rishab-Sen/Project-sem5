@@ -135,7 +135,7 @@ def plot_comparison():
     policies = [
         ("Random", "eval_random"),
         ("MAPPO (best)", "eval_mappo_best"),
-        ("QMIX (final)", "eval_qmix_final"),
+        ("QMIX (best)", "eval_qmix_best"),
         ("APF baseline*", "eval_baseline_apf"),
     ]
     data, names = [], []

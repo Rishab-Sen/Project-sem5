@@ -17,8 +17,9 @@ with **multi-agent deep reinforcement learning** (two algorithms, MAPPO and
 QMIX, implemented from scratch), compared them against a hand-engineered
 classical controller, and packaged everything as a real-time visual demo,
 formal benchmarks, figures, and a full report. The best learned policy
-(QMIX) delivers the payload **73% of the time** through the full obstacle
-course; the safest one (MAPPO) completes deliveries with **zero collisions**.
+(QMIX) delivers the payload **50% of the time** through the strict full-obstacle
+benchmark (75% at its training-time peak); the safest one (MAPPO) completes
+deliveries with **zero collisions**.
 
 ---
 
@@ -72,7 +73,8 @@ exact ground truth — making it a strong but *privileged* upper bound.
 **`src/train.py` — the training engine.** Runs either algorithm with
 **curriculum learning** (stage 0: empty arena → stage 3: full obstacle
 course), periodic greedy evaluation, CSV logs, resumable checkpoints
-(`best.pt` keeps the best policy ever seen, `final.pt` the latest). Training
+(`best.pt` keeps the best policy ever seen — the one we ship — `final.pt` the
+latest). Training
 survives interruptions: re-run the same command and it continues.
 
 **`src/evaluate.py` — the examiner.** Runs any policy over 30 fixed-seed
@@ -101,14 +103,17 @@ discussion, future work, the four references from your proposal.
 | Policy | Success | Collisions/ep | Delivery time | Character |
 |---|---|---|---|---|
 | Random | 0% | 1.6 | — | sanity floor |
-| MAPPO | 30% | **0 on every success** | 427 steps | the careful one |
-| **QMIX** | **73%** | 42.9 | **182 steps** | the fast pusher |
+| MAPPO | ~27% | **0 on every success** | 432 steps | the careful one |
+| **QMIX** | **50%** | 47.5 | **224 steps** | the fast pusher |
 | APF baseline* | 100% | 2.8 | 81 steps | privileged classical |
+
+*(QMIX numbers use its best-evaluation checkpoint; the final checkpoint
+degraded late in training — see REPORT.md §6.3.)*
 
 The most report-worthy findings:
 
 - **Curriculum was decisive.** Without it MARL barely learned (12–25%);
-  with it QMIX hit 100% on obstacle-free and stage-2 tasks and 73% on the
+  with it QMIX hit 100% on obstacle-free and stage-2 tasks and 50% on the
   full task. Same code, same compute — just staged difficulty.
 - **Speed vs safety emerged naturally.** QMIX shoves through gaps (fast,
   many contacts); MAPPO glides (slow, zero collisions when it succeeds).
@@ -141,7 +146,7 @@ The most report-worthy findings:
 
 1. `python src/demo.py --random` — chaos; shows the task is non-trivial.
 2. `python src/demo.py --baseline` — classical controller delivers fast.
-3. `python src/demo.py --ckpt runs/qmix_n3_s0/ckpt/final.pt` — the learned
+3. `python src/demo.py --ckpt runs/qmix_n3_s0/ckpt/best.pt` — the learned
    decentralized team doing it with local sensing only.
 4. Open `plots/comparison_bars.png` and `plots/trajectories.png` — the numbers
    behind the story.
