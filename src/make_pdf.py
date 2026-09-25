@@ -289,7 +289,8 @@ def build(md_path: str, pdf_path: str, with_figures: bool = False):
 
 
 def main():
-    docs = ["REPORT.md", "PROJECT_EXPLAINED.md", "README.md"]
+    docs = ["REPORT.md", "PROJECT_EXPLAINED.md", "README.md",
+            "DEMO_GUIDE.md"]
     for doc in docs:
         src = os.path.join(ROOT, doc)
         if os.path.exists(src):
